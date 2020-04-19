@@ -1,12 +1,19 @@
 import axios from "axios";
+import { CountryPicker } from "../components";
 
 const url = "https://covid19.mathdro.id/api";
 
-export const fetchData = async () => {
+export const fetchData = async (country) => {
+  let changeableUrl = url;
+
+  if (country) {
+    changeableUrl = `${url}/countries/${country}`;
+  }
+
   try {
     const {
       data: { confirmed, deaths, lastUpdate, recovered },
-    } = await axios.get(url);
+    } = await axios.get(changeableUrl);
 
     return {
       confirmed,
@@ -14,7 +21,9 @@ export const fetchData = async () => {
       deaths,
       lastUpdate,
     };
-  } catch (error) {}
+  } catch (error) {
+    console.warn("::> Fetch Data Error", error);
+  }
 };
 
 export const fetchDailyData = async () => {
@@ -26,5 +35,18 @@ export const fetchDailyData = async () => {
       date: dailyData.reportDate,
     }));
     return modifiedData;
-  } catch (error) {}
+  } catch (error) {
+    console.warn("::> Fetch Daily Data Error", error);
+  }
+};
+
+export const fetchCountries = async () => {
+  try {
+    const {
+      data: { countries },
+    } = await axios.get(`${url}/countries`);
+    return countries.map((country) => country.name);
+  } catch (error) {
+    console.warn("::> Fetch Countries Error", error);
+  }
 };
