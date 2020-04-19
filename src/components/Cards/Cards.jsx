@@ -12,7 +12,7 @@ const Cards = ({ data: { confirmed, deaths, lastUpdate, recovered } }) => {
     <Typography color='textSecondary'>{new Date(lastUpdate).toDateString()}</Typography>
   );
   return (
-    <div className={StylesProvider.container}>
+    <div className={styles.container}>
       <Grid container spacing={3} justify='center'>
         <Grid className={cx(styles.card, styles.infected)} component={Card} item md={3} xs={12}>
           <CardContent>
