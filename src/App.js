@@ -1,12 +1,15 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 
 import { Cards, Chart, CountryPicker } from "./components";
+import styles from "./App.module.css";
 export default class App extends Component {
   render() {
     return (
-      <Fragment>
-        <h1>Something</h1>
-      </Fragment>
+      <div className={styles.container}>
+        <Cards />
+        <CountryPicker />
+        <Chart />
+      </div>
     );
   }
 }
