@@ -1,5 +1,4 @@
 import axios from "axios";
-import { CountryPicker } from "../components";
 
 const url = "https://covid19.mathdro.id/api";
 
