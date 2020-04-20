@@ -1,3 +1,9 @@
+## Purpose
+
+Small SPA to display the breakdown stats of COVID-19
+
+## Stack
+
 Design: Material UI
 
 Continuous Deployment setup Via Git => Netlify Hook
